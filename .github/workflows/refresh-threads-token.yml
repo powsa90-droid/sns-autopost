@@ -1,0 +1,29 @@
+name: Refresh Threads token
+
+on:
+  schedule:
+    - cron: "23 3 * * 1"   # 매주 월요일 12:23 (한국시간)
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Refresh token and save it back to secrets
+        env:
+          OLD_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+          REPO: ${{ github.repository }}
+        run: |
+          resp=$(curl -sS -G https://graph.threads.net/refresh_access_token \
+            --data-urlencode grant_type=th_refresh_token \
+            --data-urlencode "access_token=$OLD_TOKEN")
+          new=$(echo "$resp" | jq -r '.access_token // empty')
+          if [ -z "$new" ]; then
+            echo "토큰 갱신 실패: $(echo "$resp" | jq -c '.error // "응답 없음"')"
+            exit 1
+          fi
+          echo "::add-mask::$new"
+          gh secret set THREADS_ACCESS_TOKEN --repo "$REPO" --body "$new"
+          days=$(( $(echo "$resp" | jq -r '.expires_in') / 86400 ))
+          echo "토큰 갱신 완료: 앞으로 ${days}일 유효"
