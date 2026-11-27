@@ -145,8 +145,8 @@ def main():
     render_only = os.environ.get("RENDER_ONLY") == "1"
     token = os.environ.get("INSTAGRAM_ACCESS_TOKEN", "")
     if not render_only and not token:
-        print("INSTAGRAM_ACCESS_TOKEN이 없습니다")
-        sys.exit(1)
+        print("INSTAGRAM_ACCESS_TOKEN이 아직 없어 발행을 건너뜁니다 (Secrets에 넣으면 다음 실행부터 발행)")
+        return
     now = datetime.now(timezone.utc)
     items = due_items(now, render_only)
     if not items:
