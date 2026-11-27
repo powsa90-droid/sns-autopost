@@ -9,7 +9,8 @@
   "site": "howmuch" | "saenghwal",
   "slug": "...",
   "link": "사이트 글 주소",
-  "cover": {...}, "list": {...}, "cta": {...},   # 카드 글 (ig_cards.py 참고)
+  "cards": [{"type": "cover", ...}, ..., {"type": "cta", ...}],   # 3~10장 (ig_cards.py 참고)
+  (예전 형식 "cover"/"list"/"cta" 3칸도 그대로 된다)
   "caption": "인스타 본문 (2,200자 이하)"
 }
 
@@ -99,14 +100,14 @@ def git(*args):
 
 def render_and_push(item):
     out = os.path.join("cards", item["slug"])
-    ig_cards.render(item, out)
-    git("add", out)
+    paths = ig_cards.render(item, out)
+    git("add", "-A", out)
     if subprocess.run(["git", "diff", "--cached", "--quiet"]).returncode != 0:
         git("commit", "-m", f"cards: {item['slug']}")
         git("pull", "--rebase", "--autostash")
         git("push")
     sha = git("rev-parse", "HEAD")
-    return [f"https://raw.githubusercontent.com/{REPO}/{sha}/{out}/{i}.jpg" for i in (1, 2, 3)]
+    return [f"https://raw.githubusercontent.com/{REPO}/{sha}/{out}/{i}.jpg" for i in range(1, len(paths) + 1)]
 
 
 def publish(item, urls, token):

@@ -23,16 +23,16 @@ HANDLE = "@hatifu2026"
 
 FONTS = (
     '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
-    'family=Black+Han+Sans&family=Gaegu:wght@700&family=Noto+Sans+KR:wght@700;900&display=block">'
+    'family=Black+Han+Sans&family=Noto+Sans+KR:wght@500;700;900&display=block">'
 )
 
 CSS = """
 *{box-sizing:border-box}
 body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#FFF8EE;color:#111;
- font-family:'Gaegu','Noto Sans KR',sans-serif;font-weight:700}
+ font-family:'Noto Sans KR','Noto Sans CJK KR',sans-serif;font-weight:700;letter-spacing:-0.01em}
 .page{width:1080px;height:1350px;padding:64px;display:flex;flex-direction:column;
  justify-content:space-between;align-items:center;text-align:center}
-.han{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400}
+.han{font-family:'Black Han Sans','Noto Sans KR','Noto Sans CJK KR',sans-serif;font-weight:400;letter-spacing:0}
 .badge{font-size:50px;padding:6px 34px;background:#BFF0DA;border:4px solid #111;border-radius:999px;white-space:nowrap}
 .big{display:flex;flex-direction:column;gap:22px;align-items:center;width:100%}
 .ol{-webkit-text-stroke:14px #111;paint-order:stroke fill;line-height:1.1;white-space:nowrap}
@@ -51,6 +51,26 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#FFF8EE;colo
 .lbox small{font-size:.7em;color:#555}
 .lfoot{margin-top:auto;display:flex;align-items:center;gap:24px;text-align:left}
 .note{font-size:32px;color:#555;white-space:nowrap}
+/* 속장(문제 키우기 · 정리 · 마지막 장) */
+.cv .pg{position:absolute;top:66px;right:64px;font-size:38px;opacity:.75}
+.in{gap:34px}
+.in .badge{align-self:flex-start;font-size:44px}
+.in .title{flex:0 0 auto;align-items:flex-start;gap:4px}
+.in .box{align-self:stretch;background:#fff;color:#111;border:5px solid #111;border-radius:28px;box-shadow:8px 8px 0 #111;padding:20px 40px}
+.in .r{display:flex;justify-content:space-between;align-items:baseline;gap:30px;padding:18px 0;border-bottom:3px dashed #bbb;font-size:52px}
+.in .r:last-child{border-bottom:none}
+.in .r b{font-family:'Black Han Sans',sans-serif;font-weight:400;color:#D9301A;font-size:1.2em;white-space:nowrap}
+.in .r span{white-space:nowrap;text-align:left}
+.in .r small{display:block;font-size:.62em;font-weight:500;color:#555;margin-top:4px}
+.in .tot{display:flex;justify-content:space-between;align-items:center;border-top:6px solid #111;margin-top:6px;padding-top:22px;font-size:60px}
+.in .tot b{font-family:'Black Han Sans',sans-serif;font-weight:400;color:#D9301A;font-size:1.9em;white-space:nowrap}
+.in .bot{margin-top:auto;display:flex;align-items:flex-end;gap:22px}
+.in .bot .bubble{position:relative;font-size:52px;color:#111;margin-bottom:40px}
+.in .line{font-size:58px;line-height:1.3}
+.s-night .in .mk,.s-night .mk{color:#111}
+.s-sticker .mk{background:#111;color:#FFD400}
+.in .tot span{white-space:nowrap;margin-right:24px}
+.cfoot.small{font-size:34px}
 /* 표지: 스타일 4종 공통 */
 .cv{width:1080px;height:1350px;padding:60px 60px 54px;display:flex;flex-direction:column;position:relative;overflow:hidden}
 .cv .title{flex:1;display:flex;flex-direction:column;justify-content:center;gap:10px;width:100%;min-height:0}
@@ -128,7 +148,15 @@ async () => {
     for (let i = 0; i < 3; i++) { el.style.fontSize = s + 'px'; s = Math.min(max, s * target / el.offsetWidth); }
     el.style.fontSize = Math.floor(s) + 'px';
   }
-  for (let i = 0; i < 40 && fills.length && document.documentElement.scrollHeight > 1350; i++) {
+  const cv = document.querySelector('.cv');
+  // 넘침: 제목 칸이 넘치거나, data-bleed(일부러 밖으로 삐져나간 캐릭터)가 아닌 요소가 아래 여백을 넘을 때
+  const over = () => {
+    if (!cv) return document.documentElement.scrollHeight > 1350;
+    for (const t of cv.querySelectorAll('.title')) if (t.scrollHeight > t.clientHeight + 1) return true;
+    const r = cv.getBoundingClientRect(), pb = parseFloat(getComputedStyle(cv).paddingBottom);
+    return [...cv.children].some(e => !e.hasAttribute('data-bleed') && e.getBoundingClientRect().bottom > r.bottom - pb + 1);
+  };
+  for (let i = 0; i < 40 && fills.length && over(); i++) {
     for (const el of fills) el.style.fontSize = Math.floor(parseFloat(el.style.fontSize) * 0.96) + 'px';
   }
   for (const el of document.querySelectorAll('[data-fit]')) {
@@ -139,9 +167,9 @@ async () => {
   const box = document.getElementById('fitbox');
   if (box) {
     let s = parseFloat(getComputedStyle(box).fontSize);
-    while (document.body.scrollHeight > 1350 && s > 28) { s -= 2; box.style.fontSize = s + 'px'; }
+    while (over() && s > 28) { s -= 2; box.style.fontSize = s + 'px'; }
   }
-  return document.body.scrollHeight;
+  return over() ? 9999 : 1350;
 }
 """
 
@@ -189,7 +217,8 @@ def _recent(key, n):
         try:
             with open(path, encoding="utf-8") as f:
                 d = json.load(f)
-            rows.append((d.get("posted_at", ""), d.get("cover", {}).get(key, old[key])))
+            cv = d.get("cover") or (d.get("cards") or [{}])[0]
+            rows.append((d.get("posted_at", ""), cv.get(key, old[key])))
         except Exception:
             pass
     return [v for _, v in sorted(rows)[-n:]]
@@ -231,6 +260,10 @@ def title_lines(lines, normal_max, key_max):
 def cover_html(item):
     c = item["cover"]
     style, mood = choose_look(item)
+    return cover_page(item, c, style, mood)
+
+
+def cover_page(item, c, style, mood):
     bubble = "<br>".join(rich(x) for x in c["bubble"])
     tag = c.get("tag", "")
     foot = f"{html.escape(tag)} · {SITE_DOMAIN.get(item.get('site'), HANDLE)}" if tag else footer(item)
@@ -240,7 +273,7 @@ def cover_html(item):
         body = (
             f'<div class="badge" data-fit style="font-size:46px">{badge}</div>'
             f'<div class="title" style="padding-top:20px">{title_lines(c["lines"], 190, 300)}</div>'
-            f'<div style="display:flex;align-items:flex-end;gap:26px;height:300px">'
+            f'<div data-bleed style="display:flex;align-items:flex-end;gap:26px;height:300px">'
             f'<div style="margin:0 0 -110px -10px">{char(400, mood, "none", legs=False)}</div>'
             f'<div style="display:flex;flex-direction:column;gap:22px;align-items:flex-start;padding-bottom:6px;min-width:0">'
             f'<div class="bubble han" style="position:relative;font-size:58px">{bubble}'
@@ -253,7 +286,7 @@ def cover_html(item):
             f'<div class="bubble" style="position:relative;font-size:46px;padding:14px 30px;border-width:5px;box-shadow:6px 6px 0 #111">{badge}'
             f'<span class="tail" style="left:-21px;top:32px;transform:rotate(45deg);border-width:5px;width:28px;height:28px"></span></div></div>'
             f'<div class="title">{title_lines(c["lines"], 180, 290)}</div>'
-            f'<div class="answer han">{" ".join(rich(x) for x in c["bubble"])}</div>'
+            f'<div class="answer han" data-fit style="white-space:nowrap">{" ".join(rich(x) for x in c["bubble"])}</div>'
             f'<div class="cfoot" data-fit style="margin-top:30px;align-self:center">{foot}</div>'
         )
     elif style == "night":
@@ -261,7 +294,7 @@ def cover_html(item):
             f'<div class="badge" data-fit style="font-size:46px">{badge}</div>'
             f'<div class="title">{title_lines(c["lines"], 170, 300)}</div>'
             f'<div style="display:flex;flex-direction:column;align-items:center;gap:20px">'
-            f'<div class="bubble han" style="position:relative;color:#111;font-size:56px;padding:16px 36px">{" ".join(rich(x) for x in c["bubble"])}'
+            f'<div class="bubble han" data-fit style="position:relative;color:#111;font-size:56px;padding:16px 36px;white-space:nowrap">{" ".join(rich(x) for x in c["bubble"])}'
             f'<span class="tail" style="left:50%;bottom:-23px;margin-left:-17px;transform:rotate(-45deg)"></span></div>'
             f'{char(230, mood, "up")}</div>'
             f'<div class="cfoot" data-fit style="margin-top:18px">{foot}</div>'
@@ -275,6 +308,82 @@ def cover_html(item):
             f'<div class="cfoot" data-fit style="margin-top:34px">{foot}</div>'
         )
     return doc(f'<div class="cv s-{style}">{body}</div>')
+
+
+# ── 장수 자유형 카드(cards) ─────────────────────────────────────────
+# item["cards"] = [{"type": "cover", ...}, {"type": "point", ...}, ..., {"type": "sum", ...}, {"type": "cta", ...}]
+#   cover: badge, lines(한 줄은 *별표*), bubble(불안 키우는 말), tag          ← 질문 + 공포
+#   point: kicker, title(2줄), rows[[항목, 값, 작은설명?]], bubble          ← 문제 키우기 (1~3장)
+#   sum:   kicker?, title, rows, total[항목, 값], bottom, note              ← 정리
+#   cta:   badge, lines, bubble, sub                                        ← 해결 + 저장 유도
+CARD_TYPES = ("cover", "point", "sum", "cta")
+INNER_MOODS = {"point": ["sweat", "wow"], "sum": ["wow"], "cta": ["wink", "smile"]}
+
+
+def _rows(rows):
+    out = []
+    for r in rows:
+        label, value, sub = (list(r) + ["", ""])[:3]
+        small = f"<small>{html.escape(sub)}</small>" if sub else ""
+        out.append(f'<div class="r"><span>{rich(label)}{small}</span><b>{html.escape(value)}</b></div>')
+    return "".join(out)
+
+
+def _bottom_char(mood, bubble, arms="none"):
+    txt = "<br>".join(rich(x) for x in bubble)
+    return (f'<div class="bot">{char(210, mood, arms)}<div class="bubble han">{txt}'
+            f'<span class="tail" style="left:-23px;bottom:34px;transform:rotate(45deg)"></span></div></div>')
+
+
+def inner_page(item, c, style, mood, no, total):
+    t = c["type"]
+    pg = f'<div class="pg han">{no}/{total}</div>'
+    foot = f'<div class="cfoot small" data-fit>{footer(item)}</div>'
+    if t == "point":
+        body = (
+            f'<div class="badge">{html.escape(c.get("kicker", ""))}</div>'
+            f'<div class="title">{title_lines(c["title"], 120, 170)}</div>'
+            f'<div class="box" id="fitbox" style="font-size:52px">{_rows(c.get("rows", []))}</div>'
+            f'{_bottom_char(mood, c.get("bubble", []))}{foot}'
+        )
+    elif t == "sum":
+        tl, tv = c["total"]
+        note = f'<div class="cfoot small" data-fit style="opacity:.8">{html.escape(c["note"])}</div>' if c.get("note") else ""
+        body = (
+            f'<div class="badge">{html.escape(c.get("kicker", "정리하면"))}</div>'
+            f'<div class="title">{title_lines(c["title"], 120, 170)}</div>'
+            f'<div class="box" id="fitbox" style="font-size:52px">{_rows(c.get("rows", []))}'
+            f'<div class="tot han"><span>{html.escape(tl)}</span><b>{html.escape(tv)}</b></div></div>'
+            f'<div class="line han" style="margin-top:auto">{rich(c.get("bottom", ""), "mk")}</div>{note}{foot}'
+        )
+    else:  # cta
+        bubble = "<br>".join(rich(x) for x in c["bubble"])
+        body = (
+            f'<div class="badge" data-fit style="align-self:center">{html.escape(c["badge"])}</div>'
+            f'<div class="title" style="flex:1;align-items:center">{title_lines(c["lines"], 160, 260)}</div>'
+            f'<div class="row" style="align-self:center">{char(230, mood, "point")}'
+            f'<div class="bubble han" style="color:#111">{bubble}</div></div>'
+            f'<div class="sub" data-fit style="align-self:center">{html.escape(c.get("sub", ""))}</div>'
+            f'<div class="cfoot small" data-fit style="align-self:center">{footer(item)}</div>'
+        )
+    return doc(f'<div class="cv in s-{style}">{pg}{body}</div>')
+
+
+def deck_html(item):
+    """카드 전체 HTML 목록. cards가 없으면 예전 3장 형식."""
+    if "cards" not in item:
+        return [cover_html(item), list_html(item), cta_html(item)]
+    cards = item["cards"]
+    tmp = {"cover": cards[0], "slug": item.get("slug", ""), "site": item.get("site")}
+    style, mood = choose_look(tmp)  # cards[0]에 style·mood가 기록된다
+    pages = [cover_page(item, cards[0], style, mood)]
+    seen = {}
+    for no, c in enumerate(cards[1:], 2):
+        opts = INNER_MOODS.get(c["type"], MOODS)
+        k = seen.get(c["type"], 0)
+        seen[c["type"]] = k + 1
+        pages.append(inner_page(item, c, style, c.get("mood") or opts[k % len(opts)], no, len(cards)))
+    return pages
 
 
 def list_html(item):
@@ -311,6 +420,18 @@ def cta_html(item):
 
 
 def validate(item):
+    if "cards" in item:
+        cards = item["cards"]
+        if not 3 <= len(cards) <= 10:
+            raise ValueError("cards는 3~10장이어야 합니다")
+        if cards[0].get("type") != "cover" or cards[-1].get("type") != "cta":
+            raise ValueError("cards는 cover로 시작해 cta로 끝나야 합니다")
+        for i, c in enumerate(cards, 1):
+            if c.get("type") not in CARD_TYPES:
+                raise ValueError(f"{i}번 카드 type이 잘못됐습니다: {c.get('type')}")
+        if not 2 <= len(cards[0]["lines"]) <= 4:
+            raise ValueError("표지 lines는 2~4줄이어야 합니다")
+        return
     for key in ("cover", "list", "cta"):
         if key not in item:
             raise ValueError(f"'{key}' 칸이 없습니다")
@@ -321,12 +442,14 @@ def validate(item):
 
 
 def render(item, out_dir, chrome=None):
-    """카드 3장을 out_dir/1.jpg, 2.jpg, 3.jpg로 저장하고 경로 목록을 돌려준다."""
+    """카드를 out_dir/1.jpg, 2.jpg …로 저장하고 경로 목록을 돌려준다."""
     from playwright.sync_api import sync_playwright
 
     validate(item)
     os.makedirs(out_dir, exist_ok=True)
-    pages = [cover_html(item), list_html(item), cta_html(item)]
+    pages = deck_html(item)
+    for old in glob.glob(os.path.join(out_dir, "*.jpg")):
+        os.remove(old)
     paths = []
     chrome = chrome or os.environ.get("CHROME_PATH") or "/usr/bin/google-chrome"
     with sync_playwright() as p:
