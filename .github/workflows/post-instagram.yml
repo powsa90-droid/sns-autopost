@@ -51,5 +51,6 @@ jobs:
       - name: Commit queue changes
         if: steps.check.outputs.go == '1'
         run: |
+          git rm -r -q --cached --ignore-unmatch scripts/__pycache__
           git add -A
           git diff --cached --quiet || (git commit -m "instagram posted $(date -u +%Y-%m-%dT%H:%MZ)" && git pull --rebase && git push)
