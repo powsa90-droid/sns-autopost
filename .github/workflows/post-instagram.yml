@@ -28,9 +28,14 @@ jobs:
         run: |
           if ls queue-ig/*.json >/dev/null 2>&1; then echo "go=1" >> "$GITHUB_OUTPUT"; else echo "대기 글 없음"; fi
 
+      - uses: actions/setup-python@v5
+        if: steps.check.outputs.go == '1'
+        with:
+          python-version: "3.12"
+
       - name: Install renderer
         if: steps.check.outputs.go == '1'
-        run: pip install --quiet playwright==1.49.1
+        run: pip install --quiet playwright
 
       - name: Render cards and publish
         if: steps.check.outputs.go == '1'
