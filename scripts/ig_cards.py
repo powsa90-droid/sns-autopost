@@ -29,7 +29,7 @@ body{margin:0;width:1080px;height:1350px;overflow:hidden;background:#FFF8EE;colo
 .han{font-family:'Black Han Sans','Noto Sans KR',sans-serif;font-weight:400}
 .badge{font-size:50px;padding:6px 34px;background:#BFF0DA;border:4px solid #111;border-radius:999px;white-space:nowrap}
 .big{display:flex;flex-direction:column;gap:22px;align-items:center;width:100%}
-.ol{-webkit-text-stroke:18px #111;paint-order:stroke fill;line-height:1.1;white-space:nowrap}
+.ol{-webkit-text-stroke:14px #111;paint-order:stroke fill;line-height:1.1;white-space:nowrap}
 .row{display:flex;align-items:center;gap:28px;max-width:100%}
 .bubble{font-size:60px;line-height:1.28;padding:22px 38px;background:#fff;border:6px solid #111;
  border-radius:36px;box-shadow:8px 8px 0 #111}
@@ -121,7 +121,7 @@ def cover_html(item):
 def list_html(item):
     l = item["list"]
     n = len(l["items"])
-    size = 52 if n <= 5 else 48 if n <= 7 else 44
+    size = 60 if n <= 4 else 56 if n <= 6 else 52
     rows = []
     for i, it in enumerate(l["items"], 1):
         main, note = (it + [""])[:2] if isinstance(it, list) else (it, "")
