@@ -16,7 +16,9 @@
         "그냥 넘어가면",
         "*50만 원* 날아가…"
       ],
-      "tag": "#원상복구_어디까지_내책임"
+      "tag": "#원상복구_어디까지_내책임",
+      "style": "stack",
+      "mood": "wow"
     },
     {
       "type": "point",
@@ -108,5 +110,14 @@
       "sub": "벽지·청소비·못자국 기준이랑 조정 신청까지"
     }
   ],
-  "caption": "월세 뺄 때 벽지 누렇다고 도배비 빼겠다 하면 그냥 줬어? 🤔\n\n법제처 '솔로몬의 재판'에 딱 이 사례가 있음. 집주인이 도배·청소비 50만 원 빼겠다고 했는데 결론은 세입자가 안 내도 된다였어.\n근거는 통상적인 사용으로 자연스럽게 닳거나 더러워진 건 원상회복 의무에 안 들어간다고 본 판례(서울지법 98가합44951).\n\n대신 내가 단 선반, 큰 못구멍, 보통 사용을 넘어선 훼손은 내 몫임.\n집주인 수리비 청구는 집 돌려받은 날부터 6개월 안(민법 617조).\n합의 안 되면 주택임대차분쟁조정위원회, 수수료 1억 미만이면 1만 원.\n\n이사 나가기 전에 저장해두고 꺼내봐\n자세한 조문·판례 정리는 프로필 링크에서 👆\n\n#원상복구 #월세퇴거 #보증금 #도배비 #세입자꿀팁 #이사꿀팁 #자취 #생활꿀팁"
+  "caption": "월세 뺄 때 벽지 누렇다고 도배비 빼겠다 하면 그냥 줬어? 🤔\n\n법제처 '솔로몬의 재판'에 딱 이 사례가 있음. 집주인이 도배·청소비 50만 원 빼겠다고 했는데 결론은 세입자가 안 내도 된다였어.\n근거는 통상적인 사용으로 자연스럽게 닳거나 더러워진 건 원상회복 의무에 안 들어간다고 본 판례(서울지법 98가합44951).\n\n대신 내가 단 선반, 큰 못구멍, 보통 사용을 넘어선 훼손은 내 몫임.\n집주인 수리비 청구는 집 돌려받은 날부터 6개월 안(민법 617조).\n합의 안 되면 주택임대차분쟁조정위원회, 수수료 1억 미만이면 1만 원.\n\n이사 나가기 전에 저장해두고 꺼내봐\n자세한 조문·판례 정리는 프로필 링크에서 👆\n\n#원상복구 #월세퇴거 #보증금 #도배비 #세입자꿀팁 #이사꿀팁 #자취 #생활꿀팁",
+  "posted_id": "17919166686552958",
+  "posted_at": "2026-11-28T13:11:08.899365+00:00",
+  "image_urls": [
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/109635346e571488c07d00991b4406443fe59eda/cards/move-out-restoration-scope/1.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/109635346e571488c07d00991b4406443fe59eda/cards/move-out-restoration-scope/2.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/109635346e571488c07d00991b4406443fe59eda/cards/move-out-restoration-scope/3.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/109635346e571488c07d00991b4406443fe59eda/cards/move-out-restoration-scope/4.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/109635346e571488c07d00991b4406443fe59eda/cards/move-out-restoration-scope/5.jpg"
+  ]
 }
