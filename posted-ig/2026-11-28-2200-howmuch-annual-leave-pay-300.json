@@ -16,7 +16,9 @@
         "이것까지 받으면",
         "*0원*일 수도…"
       ],
-      "tag": "#연차수당_얼마"
+      "tag": "#연차수당_얼마",
+      "style": "note",
+      "mood": "wink"
     },
     {
       "type": "point",
@@ -116,5 +118,14 @@
       "sub": "월급별 5·10·15일 금액표도 정리해둠"
     }
   ],
-  "caption": "남은 연차, 그냥 두면 돈도 같이 사라질 수 있음 😮\n\n월급 300만 원이면 연차 하루 값이 114,833원이야.\n5일 남으면 574,163원, 15일 통째로 못 쓰면 1,722,488원.\n근데 회사가 서면으로 사용 촉진 절차를 다 밟았으면 수당이 안 나와.\n5인 미만 회사, 딱 1년 계약직도 따로 따져봐야 함.\n\n계산은 실수령액이 아니라 세전 월 통상임금 ÷ 209 × 8 × 남은 일수!\n\n연말 연차 정리 전에 저장해두고 꺼내봐\n월급별 금액표·연차 계산기는 프로필 링크에서 👆\n\n#연차수당 #연차수당계산 #미사용연차 #직장인꿀팁 #월급 #생활꿀팁 #연말정리"
+  "caption": "남은 연차, 그냥 두면 돈도 같이 사라질 수 있음 😮\n\n월급 300만 원이면 연차 하루 값이 114,833원이야.\n5일 남으면 574,163원, 15일 통째로 못 쓰면 1,722,488원.\n근데 회사가 서면으로 사용 촉진 절차를 다 밟았으면 수당이 안 나와.\n5인 미만 회사, 딱 1년 계약직도 따로 따져봐야 함.\n\n계산은 실수령액이 아니라 세전 월 통상임금 ÷ 209 × 8 × 남은 일수!\n\n연말 연차 정리 전에 저장해두고 꺼내봐\n월급별 금액표·연차 계산기는 프로필 링크에서 👆\n\n#연차수당 #연차수당계산 #미사용연차 #직장인꿀팁 #월급 #생활꿀팁 #연말정리",
+  "posted_id": "18153343000560638",
+  "posted_at": "2026-11-28T13:02:52.790358+00:00",
+  "image_urls": [
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/c6f97abc1b45adcc47e3a35f43ad32cc0101708a/cards/annual-leave-pay-300/1.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/c6f97abc1b45adcc47e3a35f43ad32cc0101708a/cards/annual-leave-pay-300/2.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/c6f97abc1b45adcc47e3a35f43ad32cc0101708a/cards/annual-leave-pay-300/3.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/c6f97abc1b45adcc47e3a35f43ad32cc0101708a/cards/annual-leave-pay-300/4.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/c6f97abc1b45adcc47e3a35f43ad32cc0101708a/cards/annual-leave-pay-300/5.jpg"
+  ]
 }
