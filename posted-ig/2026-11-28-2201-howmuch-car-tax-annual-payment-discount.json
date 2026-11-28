@@ -16,7 +16,9 @@
         "1월에 한 번만 내도",
         "*할인*이 있는데…"
       ],
-      "tag": "#자동차세_연납_할인"
+      "tag": "#자동차세_연납_할인",
+      "style": "night",
+      "mood": "smile"
     },
     {
       "type": "point",
@@ -114,5 +116,14 @@
       "sub": "배기량 · 연식 · 신청 달별로 계산해둠"
     }
   ],
-  "caption": "자동차세 아직 6월, 12월에 나눠서 내? 🚗\n\n1월에 1년치를 한 번에 내면 남은 334일분에 5%를 빼줘서 연세액의 약 4.58%가 줄어.\n1,999cc면 18,290원, 교육세까지 치면 약 2만 3,800원.\n경차는 3,650원, 3,470cc는 31,750원.\n9월까지 미루면 같은 1,999cc도 5,030원으로 확 줄어듦.\n차 팔거나 폐차해도 남은 기간만큼 돌려받으니까 손해는 거의 없음.\n\n2027년 1월 16일~31일 신청 전에 저장해두고 꺼내봐\n배기량·연식별 절감액 표는 프로필 링크에서 👆\n\n#자동차세 #자동차세연납 #연납할인 #자동차유지비 #절세팁 #생활비 #생활꿀팁"
+  "caption": "자동차세 아직 6월, 12월에 나눠서 내? 🚗\n\n1월에 1년치를 한 번에 내면 남은 334일분에 5%를 빼줘서 연세액의 약 4.58%가 줄어.\n1,999cc면 18,290원, 교육세까지 치면 약 2만 3,800원.\n경차는 3,650원, 3,470cc는 31,750원.\n9월까지 미루면 같은 1,999cc도 5,030원으로 확 줄어듦.\n차 팔거나 폐차해도 남은 기간만큼 돌려받으니까 손해는 거의 없음.\n\n2027년 1월 16일~31일 신청 전에 저장해두고 꺼내봐\n배기량·연식별 절감액 표는 프로필 링크에서 👆\n\n#자동차세 #자동차세연납 #연납할인 #자동차유지비 #절세팁 #생활비 #생활꿀팁",
+  "posted_id": "18089813084687248",
+  "posted_at": "2026-11-28T13:04:38.204283+00:00",
+  "image_urls": [
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/70f587ebb00d1de2dec41c1215b932da1b2f1f72/cards/car-tax-annual-payment-discount/1.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/70f587ebb00d1de2dec41c1215b932da1b2f1f72/cards/car-tax-annual-payment-discount/2.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/70f587ebb00d1de2dec41c1215b932da1b2f1f72/cards/car-tax-annual-payment-discount/3.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/70f587ebb00d1de2dec41c1215b932da1b2f1f72/cards/car-tax-annual-payment-discount/4.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/70f587ebb00d1de2dec41c1215b932da1b2f1f72/cards/car-tax-annual-payment-discount/5.jpg"
+  ]
 }
