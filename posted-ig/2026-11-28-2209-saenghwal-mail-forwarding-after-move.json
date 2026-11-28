@@ -16,7 +16,9 @@
         "3개월 지나면",
         "*반송*되는 거 알아?"
       ],
-      "tag": "#우편물_주소이전_연장까지"
+      "tag": "#우편물_주소이전_연장까지",
+      "style": "note",
+      "mood": "sweat"
     },
     {
       "type": "point",
@@ -107,5 +109,14 @@
       "sub": "전입신고 때 신청·직접 신청·연장 방법까지"
     }
   ],
-  "caption": "이사했는데 아직 예전 집으로 우편물 오고 있어? 📮\n\n전입신고 때 우편물 전송 같이 신청했어도 다른 시·도로 옮겼으면 결제 문자가 따로 옴. 전입신고일 포함 7일 안에 안 내면 자동 취소.\n3개월 끝나기 3일 전까지 연장 안 하면 다음 날부터 보낸 사람한테 반송돼.\n\n요금은 개인 1인당 같은 권역 3개월 무료(연장 4,000원), 다른 권역 7,000원(연장 7,000원).\n서울→경기 3인 가족이 6개월 받으면 42,000원(예시).\n인터넷우체국 비회원 서비스는 지금 일시 중단이라 로그인해야 함.\n\n이사 준비할 때 저장해두고 꺼내봐\n신청 경로·연장 방법은 프로필 링크에서 👆\n\n#우편물주소이전 #주거이전서비스 #전입신고 #이사후할일 #이사준비 #생활정보 #자취생"
+  "caption": "이사했는데 아직 예전 집으로 우편물 오고 있어? 📮\n\n전입신고 때 우편물 전송 같이 신청했어도 다른 시·도로 옮겼으면 결제 문자가 따로 옴. 전입신고일 포함 7일 안에 안 내면 자동 취소.\n3개월 끝나기 3일 전까지 연장 안 하면 다음 날부터 보낸 사람한테 반송돼.\n\n요금은 개인 1인당 같은 권역 3개월 무료(연장 4,000원), 다른 권역 7,000원(연장 7,000원).\n서울→경기 3인 가족이 6개월 받으면 42,000원(예시).\n인터넷우체국 비회원 서비스는 지금 일시 중단이라 로그인해야 함.\n\n이사 준비할 때 저장해두고 꺼내봐\n신청 경로·연장 방법은 프로필 링크에서 👆\n\n#우편물주소이전 #주거이전서비스 #전입신고 #이사후할일 #이사준비 #생활정보 #자취생",
+  "posted_id": "18663456904046483",
+  "posted_at": "2026-11-28T13:12:58.949392+00:00",
+  "image_urls": [
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/1b792c846ceb46bb9fff59fd629335dd84d5d412/cards/mail-forwarding-after-move/1.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/1b792c846ceb46bb9fff59fd629335dd84d5d412/cards/mail-forwarding-after-move/2.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/1b792c846ceb46bb9fff59fd629335dd84d5d412/cards/mail-forwarding-after-move/3.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/1b792c846ceb46bb9fff59fd629335dd84d5d412/cards/mail-forwarding-after-move/4.jpg",
+    "https://raw.githubusercontent.com/powsa90-droid/sns-autopost/1b792c846ceb46bb9fff59fd629335dd84d5d412/cards/mail-forwarding-after-move/5.jpg"
+  ]
 }
